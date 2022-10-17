@@ -1,3 +1,27 @@
+For this test, I choose to use the bitwise way to determine with the list of commands which function/operation to execute.
+Like for permission -> 
+```
+{   
+    NONE: 0
+    READ: 1,
+    WRITE: 2,
+    READ_WRITE: 1 (value of READ | 2 (value of WRITE)
+}
+```
+
+We can combine the filter and count command, the filter command has a priority on the count command which result of
+a problematic during execution.
+
+There is several options to solve this issue.
+1/ Doing array of function and parsing the command line to determine which one you will execute.
+2/ Doing a if/else if/else forests.
+3/ Using a system of weight on each command.
+
+On this way, we can easily add new command possibilities and combines them.
+
+I also do some jsdoc for functions and unit tests to test parsing of the input data and to test parsing of the input
+command line.
+
 # Javascript developer test
 
 Details:

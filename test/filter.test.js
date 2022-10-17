@@ -1,9 +1,21 @@
-const {filter} = require('../app');
+const { filter } = require('../src/commands');
+const { data } = require('../data/data');
+const { expectedResultRyTestFilter } = require('../data/expected-results-unit-tests');
+const assert = require('assert');
 
-describe('filter test', () => {
-    it('should show the animals matching with the ry string pattern', () => {
-        const result = filter('ry');
 
-        expect(result).toEqual('[{"name":"Uzuzozne","people":[{"name":"Lillie Abbott","animals":[{"name":"John Dory"}]}]},{"name":"Satanwi","people":[{"name":"Anthony Bruno","animals":[{"name":"Oryx"}]}]}]');
+describe('filter test', function () {
+    it('should return array empty if no match.', function () {
+        assert.deepStrictEqual(filter(data, 'toto'), []);
     });
-});
+
+
+    it('should return 2 match animal results for \"ry\".', function () {
+        assert.deepStrictEqual(filter(data, 'ry'), expectedResultRyTestFilter);
+    });
+
+
+    it('should return empty Array when empty Array provided for \"ry\".', function () {
+        assert.deepStrictEqual(filter([], 'ry'), []);
+    });
+})
